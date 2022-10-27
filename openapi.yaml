@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Flower orangery
+  description: Multi-file OpenAPI Flowers schema tend to be more concise than Petstore
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 0.0.1
+servers:
+  - url: https://localhost:8080/
+tags:
+  - name: flower
+    description: Flower-related stuff
+    externalDocs:
+      description: Reach flower pictures
+      url: https://www.pinterest.com/search/pins/?q=flowers&rs=typed
+paths:
+  /v1/flowers:
+    $ref: 'resources/flower/flowers-paths-v1.yaml/#/~1flowers' #https://stackoverflow.com/a/61343640
+  /v1/flowers/{flowerId}/:
+    $ref: 'resources/flower/flowers-paths-v1.yaml/#/~1flowers~1{flowerId}'

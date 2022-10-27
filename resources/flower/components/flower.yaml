@@ -1,0 +1,42 @@
+# One file holding all entity-related components
+components:
+  # Single scheme data model is not suitable because it's allow user to add unmodifiable fields to request
+  # For example: in such case user could add id in POST request and doesn't get error
+  schemas:
+    FlowerDisplay:
+      required:
+        - name
+        - color
+      description: Simple flower display, where Display postfix represents response DTO with all fields
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Identity by which flower can be accessed unambiguously
+        name:
+          type: string
+          pattern: '[\w- ]+'
+          example: Chamomile
+        color:
+          type: string
+          enum:
+            - white
+            - yellow
+
+    FlowerMutation:
+      required:
+        - name
+        - color
+      description: Simple flower mutation, where Mutation postfix represents create/update DTO with only modifiable fields
+      type: object
+      properties:
+        name:
+          type: string
+          example: Chamomile
+        color:
+          type: string
+          enum:
+            - white
+            - yellow
+          description: Flower color
